@@ -73,6 +73,9 @@ event:
         text: "Register"
         img: "images/register_banner.svg"
         href: "https://vs4busw2fwo.typeform.com/to/Szn3D5SH"
+    preregister:
+        text: "Pre-Register"
+        href: "https://form.typeform.com/to/MFbBqyWI"
 
   about:
     description: >

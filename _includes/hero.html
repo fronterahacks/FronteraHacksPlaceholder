@@ -1,4 +1,5 @@
 <!-- Floating mask over the text -->
+
 <img id="floating" class="" src="/images/masks/Gradientheader.svg" alt="Frontera Devs Cyber Punk Core Buildings">
 </img>
 
@@ -11,7 +12,15 @@
       <span style="color: rgba(226, 145, 255, 0.91);" id="text-wrap">February 11-12, 2023</span>
       <img class="py-4 align-self-center align-self-lg-start" src="images/frontera_hacks_logo.png" alt="Frontera Hacks logo" id="logo">
       <span id="text-wrap">{{ site.event.tagline }}</span>
+        <!-- Pre-register Button-->
+
+      <div class="cta-button mt-4">
+        {% assign preregister = site.event.hero.preregister %}
+        <a class="btn rounded-pill mt-3" id="preregister-button" href="{{ preregister.href }}" target="_blank">
+        PRE-REGISTER
+        </a>
     </div>
+  </div>
 
     <img id="sparkle-stars" class=" col-lg-auto" src="/images/hero/ezgif.com-gif-maker.gif" alt="sparkly stars">
   </div>
