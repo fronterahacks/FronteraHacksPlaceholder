@@ -1,0 +1,5 @@
+current directory: /workspaces/FronteraHacksPlaceholder/vendor/bundle/ruby/2.7.0/gems/rainbow-2.2.2/ext
+/home/codespace/.rbenv/versions/2.7.0/bin/ruby mkrf_conf.rb
+
+current directory: /workspaces/FronteraHacksPlaceholder/vendor/bundle/ruby/2.7.0/gems/rainbow-2.2.2/ext
+/home/codespace/.rbenv/versions/2.7.0/bin/ruby -I/home/codespace/.rbenv/versions/2.7.0/lib/ruby/2.7.0/rubygems -rrubygems /workspaces/FronteraHacksPlaceholder/vendor/bundle/ruby/2.7.0/gems/rake-13.3.0/exe/rake RUBYARCHDIR\=/workspaces/FronteraHacksPlaceholder/vendor/bundle/ruby/2.7.0/extensions/x86_64-linux/2.7.0/rainbow-2.2.2 RUBYLIBDIR\=/workspaces/FronteraHacksPlaceholder/vendor/bundle/ruby/2.7.0/extensions/x86_64-linux/2.7.0/rainbow-2.2.2
