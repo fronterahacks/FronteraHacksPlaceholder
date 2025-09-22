@@ -84,15 +84,15 @@ event:
   # Info Sections
   info:
     sections:
-      - image: "images/image1.png"
+      - image: "images/issue2025images/connect.png"
         title: "CONNECT."
         description: >
           Meet developers interested in shaping the future of innovation at Frontera Hacks
-      - image: "images/image2.png"
+      - image: "images/issue2025images/grow.png"
         title: "GROW."
         description: >
           Advance your technical and interpersonal skills through our hands-on workshops 
-      - image: "images/image3.png"
+      - image: "images/issue2025images/build.png"
         title: "BUILD."
         description: >
           Develop solutions with the potential to aid and impact our community
