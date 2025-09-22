@@ -80,6 +80,18 @@ body {
   background-color: #d793e4;
 }
 
+#preregister-button {
+  background-color: #ffffff;
+  color: #d793e4;
+  transition: all 1s ease-out;
+  padding: 12px 24px;
+  font-size: 15px;
+}
+#preregister-button:hover {
+  color: #ffffff;
+  background-color: #d793e4;
+}
+
 .badges {
   display: flex;
   flex-direction: row-reverse;
