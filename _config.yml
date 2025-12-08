@@ -75,7 +75,7 @@ event:
         href: "https://vs4busw2fwo.typeform.com/to/Szn3D5SH"
     preregister:
         text: "Pre-Register"
-        href: "https://form.typeform.com/to/MFbBqyWI"
+        href: "https://airtable.com/app03CmLX12vmtzhI/shrmwcuLB7lo8zMLa"
 
   about:
     description: >
@@ -98,7 +98,7 @@ event:
           Develop solutions with the potential to aid and impact our community
   days:
     # Day 1 schedule
-    - day: "February 11th, Saturday"
+    - day: "April 18th, Saturday"
       gradient: gradient-h2-three
       slots:
         - time: "09:00AM"
@@ -114,16 +114,16 @@ event:
         - time: "01:00PM"
           name: "Lunch"
         - time: "02:00PM"
-          name: "Intro to Web Development"
+          name: "Workshop TBD"
         - time: "04:00PM"
-          name: "Snyk Cybersecurity Challenge"
+          name: "Workshop TBD"
         - time: "06:00PM"
-          name: "Slideshow Karaoke"
+          name: "Karaoke"
         - time: "11:00PM"
-          name: "Smash Bros. Tournament"
+          name: "De-stressing Activity TBD"
 
     # Day 2 schedule
-    - day: "February 12th, Sunday"
+    - day: "April 19th, Sunday"
       gradient: gradient-h2-four
       slots:
         - time: "12:00AM"
@@ -137,7 +137,7 @@ event:
         - time: "01:00PM"
           name: "Lunch"
         - time: "01:30PM"
-          name: "Women in Tech"
+          name: "Workshop TBD"
         - time: "02:00PM"
           name: "Judging"
         - time: "04:00PM"
@@ -171,21 +171,21 @@ event:
     - name: "HEB"
       image: "images/Sponsors/HEB/image 5.svg"
       url: "https://heb.com"
-    - name: "CrowdStrike"
-      image: "images/Sponsors/Crowdstrike/CrowdStrike_Logos/CS_Logos_2020_FullWhite_FullWhite.png"
-      url: "http://www.crowdstrike.com/"
-    - name: "GitHub"
-      image: "images/Sponsors/GitHub/GitHub_Logo_White 1.svg"
-      url: "https://github.com"
-    - name: "MLH"
-      image: "images/Sponsors/MLH/image 6.svg"
-      url: "https://mlh.com"
-    - name: "Rosenfeld Media"
-      image: "images/Sponsors/Rosenfeld_Media/Asset 1 1.svg"
-      url: "https://rosenfeldmedia.com/"
-    - name: "Stand Out Stickers"
-      image: "images/Sponsors/stand_out_stickers/StandOut_Stickers.svg"
-      url: "http://hackp.ac/mlh-StandOutStickers-hackathons"
+    # - name: "CrowdStrike"
+    #   image: "images/Sponsors/Crowdstrike/CrowdStrike_Logos/CS_Logos_2020_FullWhite_FullWhite.png"
+    #   url: "http://www.crowdstrike.com/"
+    # - name: "GitHub"
+    #   image: "images/Sponsors/GitHub/GitHub_Logo_White 1.svg"
+    #   url: "https://github.com"
+    # - name: "MLH"
+    #   image: "images/Sponsors/MLH/image 6.svg"
+    #   url: "https://mlh.com"
+    # - name: "Rosenfeld Media"
+    #   image: "images/Sponsors/Rosenfeld_Media/Asset 1 1.svg"
+    #   url: "https://rosenfeldmedia.com/"
+    # - name: "Stand Out Stickers"
+    #   image: "images/Sponsors/stand_out_stickers/StandOut_Stickers.svg"
+    #   url: "http://hackp.ac/mlh-StandOutStickers-hackathons"
       #followup with taskade to see if they actually want sponsorship
 
   # This is the message you'll receive once you've registered.
