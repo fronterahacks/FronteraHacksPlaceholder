@@ -21,22 +21,10 @@ style:
 
 # Let people connect & engage with you through social media.
 social:
-  - name: "Twitter"
-    handle: "fronteradevsrgv"
-    img: "images/social/twitter-black.svg"
-    url: "https://twitter.com/fronteradevsrgv"
-  - name: "Facebok"
-    handle: "fronteradevsutrgv"
-    img: "images/social/facebook-black.svg"
-    url: "https://www.facebook.com/profile.php?id=100088968430072&mibextid=LQQJ4d"
   - name: "YouTube"
-    handle: "Frontera Devs UTRGV"
+    handle: "Frontera Devs"
     img: "images/social/youtube-black.svg"
-    url: "https://www.youtube.com/channel/UCXHBRJsa9orzXiwIPGvNGSw"
-  - name: "Discord"
-    handle: "Frontera Hacks"
-    img: "images/social/discord-black.svg"
-    url: "https://discord.com/invite/fbf3HhN"
+    url: "https://www.youtube.com/@fronteradevs/"
   - name: "Instagram"
     handle: "fronteradevs"
     img: "images/social/instagram-black.svg"
@@ -44,13 +32,13 @@ social:
 # This is Search Engine Optimization. It'll help your website look better on search.
 seo:
   title: "Frontera Hacks | 11-12 February 2023"
-  description: "Frontera Hacks is the an inaugural 24-hour hackathon hosted by Frontera Devs."
+  description: "Frontera Hacks is the a 3rd annual 24-hour hackathon hosted by Frontera Devs."
   image: "_site/images/favicon.ico"
 
 # Event information.
 event:
   name: "Frontera Hacks"
-  description: "Frontera Hacks is the an inaugural 24-hour hackathon hosted by Frontera Devs."
+  description: "Frontera Hacks is the a 3rd annual 24-hour hackathon hosted by Frontera Devs."
   tagline: "Accelerating innovation in the RGV"
   date: "11-12 February 2023"
   location: "Weslaco, TX, United States"
@@ -79,7 +67,7 @@ event:
 
   about:
     description: >
-      Frontera Hacks is an inaugural 24-hour hackathon hosted by Frontera Devs that aims to foster a community of developers driven to innovate. At Frontera Hacks, we aim to provide an experience for developers of all skill levels to adopt skills taught outside of the classroom, collaborate with like-minded teams, and design projects with the potential to accelerate innovation in the Rio Grande Valley.
+      Frontera Hacks is a 3rd annual 24-hour hackathon hosted by Frontera Devs that aims to foster a community of developers driven to innovate. At Frontera Hacks, we aim to provide an experience for developers of all skill levels to adopt skills taught outside of the classroom, collaborate with like-minded teams, and design projects with the potential to accelerate innovation in the Rio Grande Valley.
 
   # Info Sections
   info:
@@ -171,19 +159,7 @@ event:
     - name: "HEB"
       image: "images/Sponsors/HEB/image 5.svg"
       url: "https://heb.com"
-      name: "Codepath"
-      image: "images/Sponsors/Codepath/Codepath.png"
-      url: "https://www.codepath.org/"
-      name: "HackerRank"
-      image: "images/Sponsors/hackerRank/HackerRank.png"
-      url: "https://www.hackerrank.com/"
-      name: "Hudl"
-      image: "images/Sponsors/Hudl/hudl.png"
-      url: "https://www.hudl.com/"
-      name: "Redbull"
-      image: "images/Sponsors/Redbull/redbull.png"
-      url: "https://www.redbull.com/us-en"
-      name: "CS UTRGV"
+    - name: "CS UTRGV"
       image: "images/Sponsors/UTRGV CS/csutrgv logo.png"
       url: "https://www.utrgv.edu/cecs/"
     # - name: "CrowdStrike"
