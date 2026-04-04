@@ -1,7 +1,193 @@
 <!-- Schedule section -->
-<section class="schedule pb-5 mb-5">
-  <div class="container text-center py-5">
-    <h1>Schedule</h1>
-    <h2 class="gradient-h2-two mt-3">COMING SOON</h2>
+<section class="schedule pb-5 mb-5" id="schedule">
+    <div class="schedule-binary-overlay"></div>
+
+  <div class="container schedule-content">
+     <div class="schedule-header">
+      <div class="faq-terminal-bar">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">// SCHEDULE.exe</span>
+      </div>
+
+    <h1 class="schedule-title"><span class="schedule-neon">HACKATHON SCHEDULE</span></h1>
+    <div class="faq-scanline"></div>
   </div>
+
+  <!--Day Tabs -->
+  <div class="schedule-tabs">
+    <button class="schedule-tab active" data-day="1">
+      <span class="tab-label"> &gt; SAT </span>
+      <span class="tab-date"> &gt; APRIL 18TH </span>
+    </button>
+    <button class="schedule-tab" data-day="2">
+      <span class="tab-label"> &gt; SUN </span>
+      <span class="tab-date"> &gt; APRIL 19TH </span>
+    </button>
+  </div>
+
+      <div class="terminal-body">
+        <div class="terminal-boot">
+          <span class="boot-line">> INITIALIZING SCHEDULE DATABASE... </span>
+          <span class="boot-line">> DECRYPTING EVENT DATA... </span>
+          <span class="boot-line">> ACCESS GRANTED ██████████ 100% </span>
+        </div>
+        <div id="schedule-output" class="schedule-output"></div>
+        <div class="terminal-cursor" id="terminal-cursor">_</div>
+      </div>
+    </div>
+
+   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const schedules = {
+        1: [
+          { time: "9:00 AM",        event: "Check In" },
+          { time: "10:00 AM",       event: "Breakfast Time" },
+          { time: "10:30 AM",       event: "Opening Ceremony & Hackathon Starts" },
+          { time: "11:00 AM",       event: "Workshop 1 — AI/API" },
+          { time: "12:30 PM",       event: "Lunch Time" },
+          { time: "1:00 PM",        event: "Workshop 2 — Github/Team Workflow" },
+          { time: "2:00 PM",        event: "Destress Activity: Open" },
+          { time: "4:30 PM",        event: "Dinner Time" },
+          { time: "5:30 PM",        event: "Workshop 3 — UI/UX" },
+          { time: "6:30 PM",        event: "Destress Activity" },
+          { time: "11:00 PM",       event: "Karaoke" },
+        ],
+        2: [
+          { time: "12:00 AM",       event: "Midnight Movie" },
+          { time: "8:00 AM",        event: "Submission Closes & Breakfast Time" },
+          { time: "10:00 AM",       event: "Destressing Activity: Professor Trivia" },
+          { time: "12:00 PM",       event: "Judging Concludes" },
+          { time: "12:15 PM",       event: "Closing Ceremony" },
+          { time: "12:30 PM",       event: "Winner Showcase" },
+          { time: "1:30 PM",        event: "Hackathon Officially Ends" },
+        ]
+      };
+
+      const GLITCH_CHARS = '@#$%&*!?/\\|<>[]{}~^';
+      let currentAnimation = null;
+      let typedDays = { 1: false };
+
+      function glitchText(finalText, duration, callback) {
+        let i = 0;
+        const interval = 30;
+        const iterations = duration / interval;
+        const anim = setInterval(() => {
+          const revealed = finalText.slice(0, Math.floor((i / iterations) * finalText.length));
+          const scrambled = Array.from(
+            { length: finalText.length - revealed.length },
+            () => GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]
+          ).join('');
+          callback(revealed + scrambled);
+          i++;
+          if (i > iterations) {
+            clearInterval(anim);
+            callback(finalText);
+          }
+        }, interval);
+        return anim;
+      }
+
+    function typeSchedule(day) {
+      if (currentAnimation) clearTimeout(currentAnimation);
+
+      const output = document.getElementById('schedule-output');
+      const cursor = document.getElementById('terminal-cursor');
+
+      output.innerHTML = '';
+      cursor.style.display = 'inline';
+
+      const items = schedules[day];
+      let lineIndex = 0;
+
+      function typeNextLine() {
+        if (lineIndex >= items.length) {
+          cursor.style.display = 'none';
+          return;
+        }
+
+        const item = items[lineIndex];
+        const line = document.createElement('div');
+        line.className = 'schedule-line';
+
+        const timeEl = document.createElement('span');
+        timeEl.className = 's-time';
+
+        const eventEl = document.createElement('span');
+        eventEl.className = 's-event';
+
+        line.appendChild(timeEl);
+        line.appendChild(eventEl);
+        output.appendChild(line);
+
+        glitchText(`[ ${item.time} ]`, 400, (txt) => {
+          timeEl.textContent = txt;
+        });
+
+        setTimeout(() => {
+          glitchText(item.event, 500, (txt) => {
+            eventEl.textContent = '  ' + txt;
+          });
+          setTimeout(() => {
+            line.classList.add('revealed');
+            lineIndex++;
+            currentAnimation = setTimeout(typeNextLine, 120);
+          }, 520);
+        }, 420);
+      }
+
+      typeNextLine();
+    }
+      function restoreSchedule(day) {
+        const output = document.getElementById('schedule-output');
+        const cursor = document.getElementById('terminal-cursor');
+        output.innerHTML = '';
+        cursor.style.display = 'none';
+
+        const items = schedules[day];
+        items.forEach(item => {
+          const line = document.createElement('div');
+          line.className = 'schedule-line revealed';
+
+          const timeEl = document.createElement('span');
+          timeEl.className = 's-time';
+          timeEl.textContent = `[ ${item.time} ]`;
+
+          const eventEl = document.createElement('span');
+          eventEl.className = 's-event';
+          eventEl.textContent = '  ' + item.event;
+
+          line.appendChild(timeEl);
+          line.appendChild(eventEl);
+          output.appendChild(line);
+        });
+      }
+
+      document.querySelectorAll('.schedule-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.schedule-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const day = parseInt(tab.dataset.day);
+
+        const output = document.getElementById('schedule-output');
+        output.classList.add('glitch-wipe');
+
+        setTimeout(() => {
+          output.classList.remove('glitch-wipe');
+          if (typedDays[day]) {
+            restoreSchedule(day);
+          } else {
+            typedDays[day] = true;
+            typeSchedule(day);
+          }
+        }, 400);
+      });
+    });
+    typeSchedule(1);
+    typedDays[1] = true;
+  });
+  </script>
 </section>

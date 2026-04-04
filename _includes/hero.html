@@ -1,29 +1,48 @@
-<!-- Floating mask over the text -->
+<!-- Sticky Navbar --> 
+ <nav class= "cyber-nav">
+  <div class= "cyber-nav-inner">
+    <div class= "cyber-nav-logo">
+      <img src="/images/FD_logo.png" alt="Frontera Devs Logo" id="nav-logo">
+    </div>
+    <div class= "cyber-nav-links">
+      <a href= "#about" class = "cyber-nav-link"> About </a>
+      <a href= "#schedule" class = "cyber-nav-link"> Schedule </a>
+      <a href= "#sponsors" class = "cyber-nav-link"> Sponsors </a>
+      <a href= "#faq" class = "cyber-nav-link"> FAQ </a>
+    </div>
+  </div>
+</nav>
+<!-- Floating mask over the text 
 
 <img id="floating" class="" src="/images/masks/Gradientheader.svg" alt="Frontera Devs Cyber Punk Core Buildings">
-</img>
+</img> -->
+ 
 
-<!-- The hero container -->
-<section class="hero fluid-container pb-sm-6 mb-sm-3 p-xs-5">
-<!-- hero title and stars -->
-  <div class="row align-items-center justify-content-center py-sm-5 mb-sm-5 p-xs-5">
-    <!-- The title and text -->
+   <!-- Binary overlay -->
+  <div class="hero-binary-overlay"></div>
+
+  <!-- Grid overlay -->
+  <div class="hero-grid-overlay"></div>
+
+  <!-- Scanline effect -->
+  <div class="hero-scanlines"></div>
+
+  <div class="hero-content row align-items-center justify-content-center py-sm-5 p-xs-5">
     <div class="fh-logo col-lg-6 d-flex flex-column text-center align-items-sm-center align-items-lg-start text-lg-start">
-      <span style="color: rgba(226, 145, 255, 0.91);" id="text-wrap">April 2026</span>
-      <img class="py-4 align-self-center align-self-lg-start" src="images/frontera_hacks_logo.png" alt="Frontera Hacks logo" id="logo">
-      <span id="text-wrap">{{ site.event.tagline }}</span>
-        <!-- Pre-register Button-->
-
+    <span class="hero-date" id="text-wrap"> April 18th - 19th, 2026</span>
+    <img class="py-4 align-self-center align-self-lg-start" src="images/frontera_hacks_logo.png" alt="Frontera Hacks Logo" id="logo">
+    <span id="text-wrap">{{ site.event.tagline }}</span>
+      <!-- Pre-register Button
       <div class="cta-button mt-4">
         {% assign register = site.event.hero.register %}
         <a class="btn rounded-pill mt-3" id="preregister-button" href="{{ register.href }}" target="_blank">
-        REGISTER
+        &gt; REGISTER
         </a>
-    </div>
+    </div> -->
   </div>
-
     <img id="sparkle-stars" class=" col-lg-auto" src="/images/hero/ezgif.com-gif-maker.gif" alt="sparkly stars">
   </div>
+
 <!-- call to action section -->
   <div class="call-to-action d-flex flex-column align-content-center align-items-center justify-content-center  my-lg-5 py-lg-5">
     <div class="d-flex flex-sm-row flex-column text-center">
@@ -32,5 +51,7 @@
     <span class="pt-2 align-self-center text-center w-50">
       The 3rd annual hackathon hosted by Frontera Devs to foster a community of developers like you, driven to innovate in the RGV.
     </span>
+     <div class="hero-cta-line mt-4"></div>
   </div>
+  
 </section>

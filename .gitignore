@@ -13,3 +13,7 @@ Gemfile.lock
 .firebaserc
 firebase.json
 .firebase
+
+#Ruby bundler
+vendor/
+.bundle/
