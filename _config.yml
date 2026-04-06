@@ -137,11 +137,14 @@ event:
       answer: >
         A hackathon is a sprint-like event where developers collaborate to build projects that solve challenges. At Frontera Hacks, hackers can look forward to educational workshops, learning from skilled mentors, and, of course, fun games and great swag.
     - question: "Who is this event for?"
+
       answer: >
         Students from all backgrounds are welcome at Frontera Hacks. No extensive knowledge of programming is necessary.
     - question: "Do I need a team to participate?"
+
       answer: >
         While teams are not required in order to participate, it’s a great way to meet new people and create something together. Teams may have up to 4 members, and you will have a chance to meet other hackers at our Team Formation events and in the Discord server!
+
     - question: "What is the cost to participate?"
       answer: >
         Nada, nothing, zilch. There is absolutely no cost for applying or participating in Frontera Hacks. We want to make this event as accessible as possible to all those interested so make sure you apply!
@@ -154,6 +157,14 @@ event:
       answer: >
         Frontera Hacks prioritizes accessibility and accomodations that make our event welcoming for everyone. Please list any special accommodations in your admissions, or contact us with any other concerns.
 
+    - question: "How many members can I have on my team?"
+      answer: >
+        The max amount of team members are 4. If you are unable to get that many teammembers, don't stress you will be able to connect with potential team mates the day of the hackathon.
+
+    - question: "Is any major able to join or is it only STEM majors?"
+      answer: >
+        Any students are able to participate in the hackathon, no matter what major or field they are currently studying.
+
   # sponsors list
   sponsors:
     - name: "HEB"
@@ -162,6 +173,9 @@ event:
     - name: "CS UTRGV"
       image: "images/Sponsors/UTRGV CS/csutrgv logo.png"
       url: "https://www.utrgv.edu/cecs/"
+    - name: "BuildRGV"
+      image: "images/Sponsors/BuildRGV/buildrgv_logo.png"
+      url: "https://buildrgv.dev/"
     # - name: "CrowdStrike"
     #   image: "images/Sponsors/Crowdstrike/CrowdStrike_Logos/CS_Logos_2020_FullWhite_FullWhite.png"
     #   url: "http://www.crowdstrike.com/"

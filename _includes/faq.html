@@ -1,14 +1,131 @@
 <!-- FAQ section -->
-<section class="faq mt-5">
-  <div class="container">
-    <h1 class="text-start">Frequently Asked Questions</h1>
-    <div class="row">
+<section class="faq mt-5" id="faq">
+
+  <div class="faq-bg-canvas">
+    <canvas id="faq-waves"></canvas>
+    <div class="faq-binary-overlay"></div>
+  </div>
+
+  <div class="container faq-content">
+    <div class="faq-header">
+      <div class="faq-terminal-bar">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">// FAQ.exe</span>
+      </div>
+      <h1 class="faq-title"><span class="faq-neon"> Frequently Asked Questions </span></h1>
+      <div class="faq-scanline"></div>
+    </div>
+
+    <div class="faq-list">
       {% for item in site.event.faq %}
-      <div class="question col-12 pb-4 col-md-6 pb-md-0">
-        <h2 class="question-gradient">{{ item.question }}</h2>
-        {{ item.answer | markdownify }}
+      <div class = "faq-item">
+        <button class= "faq-question"> 
+          <span class="faq-q-label"> &gt; </span>
+          <span class="faq-q-text">{{item.question}}</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+          {{ item.answer | markdownify }}
+          </div>
+        </div>
       </div>
       {% endfor %}
     </div>
   </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        button.parentElement.classList.toggle('open');
+      });
+    });
+
+    (function() {
+      const canvas = document.getElementById('faq-waves');
+      const ctx = canvas.getContext('2d');
+      let width, height, mouse = { x: -999, y: -999 };
+      let ripples = [];
+
+      function resize() {
+        const section = canvas.closest('.faq');
+        width = canvas.width = section.offsetWidth;
+        height = canvas.height = section.offsetHeight;
+      }
+
+      const WAVES = 8;
+      const BASE_COLORS = [
+        [180, 0, 255],[99, 51, 255],[255, 0, 200],[59, 130, 246],
+        [180, 0, 255],[168, 85, 247],[255, 0, 200],[99, 51, 255],
+      ];
+
+      function drawWaves(t) {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < WAVES; i++) {
+          const [r, g, b] = BASE_COLORS[i];
+          const yBase = height * (0.1 + i * 0.12);
+          const speed = 0.0006 + i * 0.00015;
+          const baseAmp = 10 + i * 5;
+          const dx = mouse.x - width / 2;
+          const dy = mouse.y - yBase;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const influence = Math.max(0, 1 - dist / 500);
+          const mouseAmp = influence * 70;
+
+          let rippleAmp = 0;
+          ripples.forEach(rp => {
+            const age = (t - rp.born) / 1000;
+            const rdx = rp.x - width / 2;
+            const rdy = rp.y - yBase;
+            const rdist = Math.sqrt(rdx * rdx + rdy * rdy);
+            const fade = Math.max(0, 1 - age / 2);
+            rippleAmp += Math.sin(rdist * 0.03 - age * 10) * fade * 45;
+          });
+
+          ctx.beginPath();
+          ctx.moveTo(0, yBase);
+          for (let x = 0; x <= width; x += 2) {
+            const p = x / width;
+            const w1 = Math.sin(p * Math.PI * 6 + t * speed) * (baseAmp + mouseAmp * Math.sin(p * Math.PI));
+            const w2 = Math.sin(p * Math.PI * 4 - t * speed * 1.5 + i) * baseAmp * 0.4;
+            const rW = Math.sin(p * Math.PI * 8 + rippleAmp * 0.1) * rippleAmp * 0.35;
+            ctx.lineTo(x, yBase + w1 + w2 + rW);
+          }
+
+          const alpha = 0.08 + influence * 0.3;
+          ctx.strokeStyle = `rgba(${r},${g},${b},${alpha})`;
+          ctx.lineWidth = 1 + influence * 2.5;
+          ctx.shadowColor = `rgba(${r},${g},${b},0.6)`;
+          ctx.shadowBlur = influence * 12;
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+        }
+        ripples = ripples.filter(rp => (t - rp.born) < 2000);
+        requestAnimationFrame(loop);
+      }
+
+      function loop(t) { drawWaves(t); }
+
+      const section = canvas.closest('.faq');
+      section.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      section.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+      section.addEventListener('click', e => {
+        const rect = canvas.getBoundingClientRect();
+        ripples.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, born: performance.now() });
+      });
+
+      window.addEventListener('resize', resize);
+      resize();
+      requestAnimationFrame(loop);
+    })();
+  });
+
+  </script>
 </section>
