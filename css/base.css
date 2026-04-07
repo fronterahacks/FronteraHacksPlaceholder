@@ -347,6 +347,11 @@
   z-index: 2;
 }
 
+.hero-content {
+  padding-top: 10rem !important;
+}
+
+
 /* Terminal bar */
 .hero-terminal-bar {
   display: flex;
