@@ -460,6 +460,7 @@
   gap: 40px;
   margin-bottom: 60px;
   flex-wrap: wrap;
+  padding: 0 40px;
 }
 
 .about-text-block {
@@ -470,9 +471,10 @@
   background: var(--bg-card);
   border: 1px solid var(--border-purple);
   border-radius: 8px;
-  padding: 28px;
+  padding: 32px;
   backdrop-filter: blur(12px);
   box-shadow: 0 0 30px rgba(180, 0, 255, 0.08);
+  margin-right: auto;
 }
 
 .about-prompt {
@@ -584,6 +586,350 @@
   color:var(--text-purple);
   line-height: 1.7;
   margin: 0;
+}
+
+/* ── Countdown Timer ── */
+.countdown-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  position: relative;
+  width:L 100%;
+  margin-top: 40px;
+}
+
+.countdown-terminal {
+  border: 1px solid rgba(180, 0, 255, 0.4);
+  border-radius: 8px;
+  background: rgba(2, 2, 12, 0.9);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 40px rgba(180, 0, 255, 0.2),
+    inset 0 0 40px rgba(180, 0, 255, 0.03);
+  overflow: hidden;
+  min-width: 380px;
+  margin: 0 auto;
+}
+
+.countdown-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: rgba(180, 0, 255, 0.08);
+  border-bottom: 1px solid rgba(180, 0, 255, 0.2);
+}
+
+.countdown-terminal-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(180, 0, 255, 0.8);
+  margin-left: 8px;
+  letter-spacing: 0.15em;
+}
+
+.countdown-body {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.countdown-status {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(180, 0, 255, 0.8);
+  letter-spacing: 0.1em;
+  animation: blink 2s step-end infinite;
+}
+
+.countdown-grid {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.countdown-number {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(180deg, #fff 0%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  line-height: 1;
+  min-width: 60px;
+  text-align: center;
+  filter: drop-shadow(0 0 8px rgba(180, 0, 255, 0.6));
+}
+
+.countdown-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(180, 0, 255, 0.6);
+  letter-spacing: 0.2em;
+}
+
+.countdown-divider {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  color: rgba(180, 0, 255, 0.5);
+  font-weight: 900;
+  animation: blink 1s step-end infinite;
+  margin-bottom: 20px;
+}
+
+/* Progress bar */
+.countdown-progress-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(180, 0, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.countdown-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #b400ff, #6333ff, #ff00c8);
+  border-radius: 2px;
+  transition: width 1s linear;
+  box-shadow: 0 0 8px rgba(180, 0, 255, 0.6);
+}
+
+.countdown-target {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(180, 0, 255, 0.5);
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* ── Tracks Section ── */
+.tracks-section {
+  position: relative;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.tracks-content {
+  position: relative;
+  z-index: 1;
+}
+
+.tracks-title {
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  text-shadow: none;
+}
+
+.tracks-neon {
+  color: #b400ff;
+  text-shadow:
+    0 0 6px rgba(180, 0, 255, 0.5),
+    0 0 15px rgba(180, 0, 255, 0.3);
+  animation: flicker 4s infinite;
+}
+
+.tracks-subtitle {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: rgba(192, 132, 252, 0.8);
+  margin-bottom: 48px;
+  letter-spacing: 0.05em;
+}
+
+/* Tracks Grid */
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* Flip Card */
+.track-card {
+  perspective: 1000px;
+  height: 380px;
+  cursor: pointer;
+}
+
+.track-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.track-card.flipped .track-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back shared styles */
+.track-card-front,
+.track-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border: 1px solid rgba(180, 0, 255, 0.25);
+  border-radius: 8px;
+  padding: 32px 28px;
+  background: rgba(5, 5, 20, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.track-card:hover .track-card-front {
+  border-color: rgba(180, 0, 255, 0.7);
+  box-shadow: 0 0 30px rgba(180, 0, 255, 0.2);
+}
+
+.track-card-back {
+  transform: rotateY(180deg);
+  border-color: #b400ff;
+  box-shadow: 0 0 30px rgba(180, 0, 255, 0.25);
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+/* Corner decorations */
+.track-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: #b400ff;
+  border-style: solid;
+  opacity: 0.6;
+}
+
+.track-corner-tl { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+.track-corner-tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+.track-corner-bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
+.track-corner-br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+/* Track number */
+.track-number {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(180, 0, 255, 0.6);
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+/* Track icon */
+.track-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(180, 0, 255, 0.5));
+}
+
+/* Track name front */
+.track-name {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  background: linear-gradient(90deg, #e040fb, #7c4dff, #40c4ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+  margin-bottom: 16px;
+}
+
+/* Track hint */
+.track-hint {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(180, 0, 255, 0.5);
+  letter-spacing: 0.15em;
+  animation: blink 1.5s step-end infinite;
+}
+
+.track-back-hint {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(180, 0, 255, 0.5);
+  letter-spacing: 0.15em;
+  margin-top: 16px;
+  animation: blink 1.5s step-end infinite;
+}
+
+/* Track back content */
+.track-name-back {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  background: linear-gradient(90deg, #e040fb, #7c4dff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+.track-desc {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+/* Glitch overlay */
+.track-glitch-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(180, 0, 255, 0.08) 0px,
+    rgba(180, 0, 255, 0.08) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  z-index: 10;
+  transition: opacity 0.1s;
+}
+
+.track-glitch-overlay.active {
+  opacity: 1;
+  animation: glitchScan 0.5s steps(1) forwards;
+}
+
+@keyframes glitchScan {
+  0%   { opacity: 1; transform: translateX(0) skewX(0deg); filter: hue-rotate(0deg); }
+  20%  { opacity: 0.8; transform: translateX(-4px) skewX(-2deg); filter: hue-rotate(90deg); }
+  40%  { opacity: 1; transform: translateX(4px) skewX(2deg); filter: hue-rotate(180deg); }
+  60%  { opacity: 0.6; transform: translateX(-2px) skewX(-1deg); filter: hue-rotate(270deg); }
+  80%  { opacity: 0.9; transform: translateX(2px) skewX(1deg); filter: hue-rotate(360deg); }
+  100% { opacity: 0; transform: translateX(0) skewX(0deg); filter: hue-rotate(0deg); }
 }
 
 /*-- Schedule Section -- */

@@ -1,0 +1,143 @@
+<!-- Tracks Section -->
+<section class="tracks-section" id="tracks">
+
+  <div class="container tracks-content">
+
+    <div class="faq-terminal-bar">
+      <span class="terminal-dot"></span>
+      <span class="terminal-dot"></span>
+      <span class="terminal-dot"></span>
+      <span class="terminal-title">// TRACKS.exe</span>
+    </div>
+
+    <h1 class="tracks-title"><span class="tracks-neon">CHOOSE YOUR TRACK</span></h1>
+    <div class="faq-scanline"></div>
+    <p class="tracks-subtitle">&gt; Select a track to begin your hackathon journey.</p>
+
+    <div class="tracks-grid">
+
+      <!-- Track 1: Social Good -->
+      <div class="track-card" onclick="glitchFlip(this)">
+        <div class="track-card-inner">
+          <div class="track-card-front">
+            <div class="track-glitch-overlay"></div>
+            <div class="track-number">&gt; 01</div>
+            <div class="track-icon">🤝</div>
+            <h2 class="track-name">Social Good</h2>
+            <p class="track-hint">[ CLICK TO REVEAL ]</p>
+            <div class="track-corner track-corner-tl"></div>
+            <div class="track-corner track-corner-tr"></div>
+            <div class="track-corner track-corner-bl"></div>
+            <div class="track-corner track-corner-br"></div>
+          </div>
+          <div class="track-card-back">
+            <div class="track-number">&gt; 01</div>
+            <h2 class="track-name-back">Social Good</h2>
+            <p class="track-desc">Create a project that uses technology to make a positive difference in people's lives. Whether addressing healthcare access, education equity, civic engagement, mental health, or community resilience, this track is about building solutions that uplift individuals and strengthen communities.</p>
+            <p class="track-desc">Projects should be driven by empathy and impact — prioritizing the needs of real people and creating tools that are accessible, ethical, and genuinely useful.</p>
+            <p class="track-back-hint">[ CLICK TO CLOSE ]</p>
+            <div class="track-corner track-corner-tl"></div>
+            <div class="track-corner track-corner-tr"></div>
+            <div class="track-corner track-corner-bl"></div>
+            <div class="track-corner track-corner-br"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Track 2: Machine Learning / AI -->
+      <div class="track-card" onclick="glitchFlip(this)">
+        <div class="track-card-inner">
+          <div class="track-card-front">
+            <div class="track-glitch-overlay"></div>
+            <div class="track-number">&gt; 02</div>
+            <div class="track-icon">🤖</div>
+            <h2 class="track-name">Machine Learning / AI</h2>
+            <p class="track-hint">[ CLICK TO REVEAL ]</p>
+            <div class="track-corner track-corner-tl"></div>
+            <div class="track-corner track-corner-tr"></div>
+            <div class="track-corner track-corner-bl"></div>
+            <div class="track-corner track-corner-br"></div>
+          </div>
+          <div class="track-card-back">
+            <div class="track-number">&gt; 02</div>
+            <h2 class="track-name-back">Machine Learning / AI</h2>
+            <p class="track-desc">Build a project that harnesses the power of machine learning and artificial intelligence to solve meaningful challenges. Whether it's developing predictive models, creating intelligent automation, building recommendation systems, or applying computer vision and NLP, this track is about turning data into impact.</p>
+            <p class="track-desc">Projects can focus on making AI more accessible and explainable, applying models to underserved domains, or designing systems that push the boundaries of what technology can do.</p>
+            <p class="track-back-hint">[ CLICK TO CLOSE ]</p>
+            <div class="track-corner track-corner-tl"></div>
+            <div class="track-corner track-corner-tr"></div>
+            <div class="track-corner track-corner-bl"></div>
+            <div class="track-corner track-corner-br"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Track 3: Enterprise -->
+      <div class="track-card" onclick="glitchFlip(this)">
+        <div class="track-card-inner">
+          <div class="track-card-front">
+            <div class="track-glitch-overlay"></div>
+            <div class="track-number">&gt; 03</div>
+            <div class="track-icon">🏢</div>
+            <h2 class="track-name">Enterprise</h2>
+            <p class="track-hint">[ CLICK TO REVEAL ]</p>
+            <div class="track-corner track-corner-tl"></div>
+            <div class="track-corner track-corner-tr"></div>
+            <div class="track-corner track-corner-bl"></div>
+            <div class="track-corner track-corner-br"></div>
+          </div>
+          <div class="track-card-back">
+            <div class="track-number">&gt; 03</div>
+            <h2 class="track-name-back">Enterprise</h2>
+            <p class="track-desc">Design a solution that transforms the way organizations operate. From streamlining workflows and automating processes to improving team collaboration, data management, or decision-making at scale, this track challenges you to build tools that make businesses smarter and more efficient.</p>
+            <p class="track-desc">Projects can target any industry and focus on reducing friction, cutting costs, improving productivity, or enabling companies to do things they simply couldn't do before.</p>
+            <p class="track-back-hint">[ CLICK TO CLOSE ]</p>
+            <div class="track-corner track-corner-tl"></div>
+            <div class="track-corner track-corner-tr"></div>
+            <div class="track-corner track-corner-bl"></div>
+            <div class="track-corner track-corner-br"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  function glitchFlip(card) {
+    if (card.classList.contains('glitching')) return;
+    card.classList.add('glitching');
+
+    const overlay = card.querySelector('.track-glitch-overlay');
+    if (overlay) overlay.classList.add('active');
+
+    let flipped = card.classList.contains('flipped');
+    const GLITCH_CHARS = '@#$%&*!?/\\|<>[]{}~^';
+    const nameEl = flipped
+      ? card.querySelector('.track-name')
+      : card.querySelector('.track-name-back');
+
+    if (nameEl) {
+      const original = nameEl.textContent;
+      let i = 0;
+      const scramble = setInterval(() => {
+        nameEl.textContent = Array.from(original)
+          .map((c, idx) => idx < i ? c : GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)])
+          .join('');
+        i++;
+        if (i > original.length) {
+          clearInterval(scramble);
+          nameEl.textContent = original;
+        }
+      }, 40);
+    }
+
+    setTimeout(() => {
+      if (overlay) overlay.classList.remove('active');
+      card.classList.toggle('flipped');
+      card.classList.remove('glitching');
+    }, 500);
+  }
+  </script>
+
+</section>

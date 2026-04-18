@@ -6,6 +6,7 @@
     </div>
     <div class= "cyber-nav-links">
       <a href= "#about" class = "cyber-nav-link"> About </a>
+      <a href="#tracks" class = "cyber-nav-link">Tracks</a>
       <a href= "#schedule" class = "cyber-nav-link"> Schedule </a>
       <a href= "#sponsors" class = "cyber-nav-link"> Sponsors </a>
       <a href= "#faq" class = "cyber-nav-link"> FAQ </a>
@@ -32,6 +33,7 @@
     <span class="hero-date" id="text-wrap"> April 18th - 19th, 2026</span>
     <img class="py-4 align-self-center align-self-lg-start" src="images/frontera_hacks_logo.png" alt="Frontera Hacks Logo" id="logo">
     <span id="text-wrap">{{ site.event.tagline }}</span>
+
       <!-- Pre-register Button
       <div class="cta-button mt-4">
         {% assign register = site.event.hero.register %}
@@ -39,9 +41,150 @@
         &gt; REGISTER
         </a>
     </div> -->
-  </div>
+  <!-- </div>
     <img id="sparkle-stars" class=" col-lg-auto" src="/images/hero/ezgif.com-gif-maker.gif" alt="sparkly stars">
+  </div> -->
+  <!-- CountDown Timer -->
+<div class="row justify-content-center w-100 mt-5">
+  <div class="col-auto">
+    <div class="countdown-terminal">
+      <div class="countdown-header">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="countdown-terminal-title">// COUNTDOWN.exe</span>
+      </div>
+      <div class="countdown-body">
+        <div class="countdown-status" id="countdown-status">&gt;_ INITIALIZING...</div>
+        <div class="countdown-grid" id="countdown-grid">
+          <div class="countdown-unit">
+            <div class="countdown-number" id="days">00</div>
+            <div class="countdown-label">DAYS</div>
+          </div>
+          <div class="countdown-divider">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-number" id="hours">00</div>
+            <div class="countdown-label">HRS</div>
+          </div>
+          <div class="countdown-divider">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-number" id="minutes">00</div>
+            <div class="countdown-label">MIN</div>
+          </div>
+          <div class="countdown-divider">:</div>
+          <div class="countdown-unit">
+            <div class="countdown-number" id="seconds">00</div>
+            <div class="countdown-label">SEC</div>
+          </div>
+        </div>
+        <div class="countdown-progress-bar">
+          <div class="countdown-progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="countdown-target" id="countdown-target">&gt;_ TARGET: SUBMISSIONS CLOSE @ 08:00 AM</div>
+      </div>
+    </div>
   </div>
+</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const START    = new Date('April 18, 2026 10:30:00');
+  const END      = new Date('April 19, 2026 08:00:00');
+  const TOTAL_MS = END - START;
+
+  const statusEl   = document.getElementById('countdown-status');
+  const daysEl     = document.getElementById('days');
+  const hoursEl    = document.getElementById('hours');
+  const minutesEl  = document.getElementById('minutes');
+  const secondsEl  = document.getElementById('seconds');
+  const progressEl = document.getElementById('progress-fill');
+  const targetEl   = document.getElementById('countdown-target');
+
+  const GLITCH_CHARS = '@#$%&*!?[]{}~^';
+
+  function glitchNumber(el, value) {
+    let i = 0;
+    const final = String(value).padStart(2, '0');
+    const anim = setInterval(() => {
+      el.textContent = Array.from(final).map((c, idx) =>
+        idx < i ? c : GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)]
+      ).join('');
+      i++;
+      if (i > final.length) {
+        clearInterval(anim);
+        el.textContent = final;
+      }
+    }, 40);
+  }
+
+  let lastSeconds = -1;
+
+  function update() {
+    const now      = new Date();
+    const diffStart = now - START;
+    const diffEnd   = END - now;
+
+    if (now < START) {
+      // Before hackathon starts
+      const diff = START - now;
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      statusEl.textContent = '> HACKATHON STARTS IN:';
+      statusEl.style.color = 'rgba(180, 0, 255, 0.8)';
+      targetEl.textContent = '> TARGET: APRIL 18TH @ 10:30 AM';
+      progressEl.style.width = '0%';
+
+      if (s !== lastSeconds) {
+        glitchNumber(daysEl, d);
+        glitchNumber(hoursEl, h);
+        glitchNumber(minutesEl, m);
+        glitchNumber(secondsEl, s);
+        lastSeconds = s;
+      }
+
+    } else if (now >= START && now < END) {
+      // Hackathon is live
+      const d = Math.floor(diffEnd / 86400000);
+      const h = Math.floor((diffEnd % 86400000) / 3600000);
+      const m = Math.floor((diffEnd % 3600000) / 60000);
+      const s = Math.floor((diffEnd % 60000) / 1000);
+
+      statusEl.textContent = '> HACKING IN PROGRESS...';
+      statusEl.style.color = '#ff00c8';
+      targetEl.textContent = '> TARGET: SUBMISSIONS CLOSE @ 08:00 AM';
+
+      const progress = (diffStart / TOTAL_MS) * 100;
+      progressEl.style.width = Math.min(progress, 100) + '%';
+
+      if (s !== lastSeconds) {
+        glitchNumber(daysEl, d);
+        glitchNumber(hoursEl, h);
+        glitchNumber(minutesEl, m);
+        glitchNumber(secondsEl, s);
+        lastSeconds = s;
+      }
+
+    } else {
+      // Submissions closed
+      statusEl.textContent = '> SUBMISSIONS CLOSED';
+      statusEl.style.color = '#b400ff';
+      daysEl.textContent   = '00';
+      hoursEl.textContent  = '00';
+      minutesEl.textContent = '00';
+      secondsEl.textContent = '00';
+      progressEl.style.width = '100%';
+      targetEl.textContent = '> HACKING HAS ENDED. SEE YOU NEXT YEAR!';
+    }
+  }
+
+  update();
+  setInterval(update, 1000);
+});
+</script>
 
 <!-- call to action section -->
   <div class="call-to-action d-flex flex-column align-content-center align-items-center justify-content-center  my-lg-5 py-lg-5">
